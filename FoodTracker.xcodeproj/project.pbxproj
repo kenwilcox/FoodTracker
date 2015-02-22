@@ -15,6 +15,7 @@
 		BEB357C51A9983B000E34202 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB357C31A9983B000E34202 /* LaunchScreen.xib */; };
 		BEB357D11A9983B000E34202 /* FoodTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB357D01A9983B000E34202 /* FoodTrackerTests.swift */; };
 		BEB357DC1A99852D00E34202 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BEB357DA1A99852D00E34202 /* LICENSE */; };
+		BEB357DF1A9986E700E34202 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB357DE1A9986E700E34202 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		BEB357D01A9983B000E34202 /* FoodTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTrackerTests.swift; sourceTree = "<group>"; };
 		BEB357DA1A99852D00E34202 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BEB357DB1A99852D00E34202 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BEB357DE1A9986E700E34202 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				BEB357B71A9983B000E34202 /* AppDelegate.swift */,
 				BEB357BC1A9983B000E34202 /* ViewController.swift */,
+				BEB357DE1A9986E700E34202 /* DetailViewController.swift */,
 				BEB357BE1A9983B000E34202 /* Main.storyboard */,
 				BEB357C11A9983B000E34202 /* Images.xcassets */,
 				BEB357C31A9983B000E34202 /* LaunchScreen.xib */,
@@ -224,6 +227,7 @@
 				BEB357BD1A9983B000E34202 /* ViewController.swift in Sources */,
 				BEB357BB1A9983B000E34202 /* FoodTracker.xcdatamodeld in Sources */,
 				BEB357B81A9983B000E34202 /* AppDelegate.swift in Sources */,
+				BEB357DF1A9986E700E34202 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
