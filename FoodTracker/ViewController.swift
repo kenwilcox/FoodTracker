@@ -15,6 +15,7 @@ class ViewController: UIViewController {
   var searchController: UISearchController!
   var suggestedSearchFoods: [String] = []
   var filteredSuggestedSearchFoods: [String] = []
+  var searchString: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
     // ensure the search results controller is presented inside the view controller
     self.definesPresentationContext = true
     
-    self.suggestedSearchFoods = ["apple", "bagel", "banana", "beer", "bread", "carrots", "cheddar cheese", "chicen breast", "chili with beans", "chocolate chip cookie", "coffee", "cola", "corn", "egg", "graham cracker", "granola bar", "green beans", "ground beef patty", "hot dog", "ice cream", "jelly doughnut", "ketchup", "milk", "mixed nuts", "mustard", "oatmeal", "orange juice", "peanut butter", "pizza", "pork chop", "potato", "potato chips", "pretzels", "raisins", "ranch salad dressing", "red wine", "rice", "salsa", "shrimp", "spaghetti", "spaghetti sauce", "tuna", "white wine", "yellow cake"]
+    self.suggestedSearchFoods = ["apple", "bagel", "banana", "beer", "bread", "carrots", "cheddar cheese", "chicken breast", "chili with beans", "chocolate chip cookie", "coffee", "cola", "corn", "egg", "graham cracker", "granola bar", "green beans", "ground beef patty", "hot dog", "ice cream", "jelly doughnut", "ketchup", "milk", "mixed nuts", "mustard", "oatmeal", "orange juice", "peanut butter", "pizza", "pork chop", "potato", "potato chips", "pretzels", "raisins", "ranch salad dressing", "red wine", "rice", "salsa", "shrimp", "spaghetti", "spaghetti sauce", "tuna", "white wine", "yellow cake"]
   }
   
   override func didReceiveMemoryWarning() {
@@ -54,18 +55,20 @@ extension ViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
     var foodName: String
-    if self.searchController.active {
+    
+    if self.searchController.active && self.searchString! != "" {
       foodName = filteredSuggestedSearchFoods[indexPath.row]
     } else {
       foodName = suggestedSearchFoods[indexPath.row]
     }
+    
     cell.textLabel?.text = foodName
     cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
     return cell
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if self.searchController.active {
+    if self.searchController.active && self.searchString! != "" {
       return self.filteredSuggestedSearchFoods.count
     } else {
       return self.suggestedSearchFoods.count
@@ -85,7 +88,18 @@ extension ViewController: UISearchControllerDelegate {
 
 // MARK: UISearchResultsUpdating
 extension ViewController: UISearchResultsUpdating {
+  func filterContentForSearch (searchText: String, scope: Int) {
+    self.filteredSuggestedSearchFoods = self.suggestedSearchFoods.filter({ (food: String) -> Bool in
+      var foodMatch = food.rangeOfString(searchText)
+      return foodMatch != nil
+    })
+  }
+  
   func updateSearchResultsForSearchController(searchController: UISearchController) {
-    
+    self.searchString = self.searchController.searchBar.text
+    let selectedScopeButtonIndex = self.searchController.searchBar.selectedScopeButtonIndex
+    self.filterContentForSearch(self.searchString!, scope: selectedScopeButtonIndex)
+    self.tableView.reloadData()
   }
 }
+
