@@ -14,6 +14,7 @@
 		BEB357C21A9983B000E34202 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEB357C11A9983B000E34202 /* Images.xcassets */; };
 		BEB357C51A9983B000E34202 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB357C31A9983B000E34202 /* LaunchScreen.xib */; };
 		BEB357D11A9983B000E34202 /* FoodTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB357D01A9983B000E34202 /* FoodTrackerTests.swift */; };
+		BEB357DC1A99852D00E34202 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BEB357DA1A99852D00E34202 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		BEB357CA1A9983B000E34202 /* FoodTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEB357CF1A9983B000E34202 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEB357D01A9983B000E34202 /* FoodTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTrackerTests.swift; sourceTree = "<group>"; };
+		BEB357DA1A99852D00E34202 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		BEB357DB1A99852D00E34202 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 		BEB357A91A9983B000E34202 = {
 			isa = PBXGroup;
 			children = (
+				BEB357DA1A99852D00E34202 /* LICENSE */,
+				BEB357DB1A99852D00E34202 /* README.md */,
 				BEB357B41A9983B000E34202 /* FoodTracker */,
 				BEB357CD1A9983B000E34202 /* FoodTrackerTests */,
 				BEB357B31A9983B000E34202 /* Products */,
@@ -197,6 +202,7 @@
 			files = (
 				BEB357C01A9983B000E34202 /* Main.storyboard in Resources */,
 				BEB357C51A9983B000E34202 /* LaunchScreen.xib in Resources */,
+				BEB357DC1A99852D00E34202 /* LICENSE in Resources */,
 				BEB357C21A9983B000E34202 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
