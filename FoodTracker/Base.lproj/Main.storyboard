@@ -82,8 +82,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jYU-4u-zdN">
-                        <barButtonItem key="rightBarButtonItem" title="Eat It" id="ORx-P1-svN"/>
+                        <barButtonItem key="rightBarButtonItem" title="Eat It" id="ORx-P1-svN">
+                            <connections>
+                                <action selector="eatItBarButtonItemPressed:" destination="IAt-oV-RfZ" id="cx6-St-O7T"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="esv-ff-f90" id="wSc-da-m2g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPd-C0-Cm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
