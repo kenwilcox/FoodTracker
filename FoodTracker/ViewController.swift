@@ -16,6 +16,7 @@ class ViewController: UIViewController {
   var suggestedSearchFoods: [String] = []
   var filteredSuggestedSearchFoods: [String] = []
   var searchString: String?
+  var scopeButtonTitles = ["Recommended", "Search Results", "Saved"]
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
     // stick the searchbar in the header
     self.tableView.tableHeaderView = self.searchController.searchBar
     
+    self.searchController.searchBar.scopeButtonTitles = self.scopeButtonTitles
     self.searchController.searchBar.delegate = self
     
     // ensure the search results controller is presented inside the view controller
