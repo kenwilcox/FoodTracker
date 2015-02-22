@@ -17,6 +17,20 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.searchController = UISearchController(searchResultsController: nil)
+    self.searchController.searchResultsUpdater = self
+    self.searchController.dimsBackgroundDuringPresentation = false
+    self.searchController.hidesNavigationBarDuringPresentation = false
+    
+    self.searchController.searchBar.frame = CGRect(x: self.searchController.searchBar.frame.origin.x, y: self.searchController.searchBar.frame.origin.y, width: self.searchController.searchBar.frame.size.width, height: 44.0)
+    // stick the searchbar in the header
+    self.tableView.tableHeaderView = self.searchController.searchBar
+    
+    self.searchController.searchBar.delegate = self
+    
+    // ensure the search results controller is presented inside the view controller
+    self.definesPresentationContext = true
   }
   
   override func didReceiveMemoryWarning() {
