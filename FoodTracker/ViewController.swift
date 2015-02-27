@@ -11,8 +11,6 @@ import UIKit
 class ViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
-  let kAppId = "--get your own--"
-  let kAppKey = "at http://developer.nutritionix.com"
   
   var searchController: UISearchController!
   var suggestedSearchFoods: [String] = []
