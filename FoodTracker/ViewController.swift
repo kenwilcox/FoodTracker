@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
+  let kAppId = "--get your own--"
+  let kAppKey = "at http://developer.nutritionix.com"
   
   var searchController: UISearchController!
   var suggestedSearchFoods: [String] = []
@@ -80,7 +82,9 @@ extension ViewController: UITableViewDataSource {
 
 // MARK: UISearchBarDelegate
 extension ViewController: UISearchBarDelegate {
-  
+  func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    makeRequest(searchBar.text)
+  }
 }
 
 // MARK: UISearchControllerDelegate
@@ -102,6 +106,16 @@ extension ViewController: UISearchResultsUpdating {
     let selectedScopeButtonIndex = self.searchController.searchBar.selectedScopeButtonIndex
     self.filterContentForSearch(self.searchString!, scope: selectedScopeButtonIndex)
     self.tableView.reloadData()
+  }
+  
+  func makeRequest(searchString: String) {
+    let url = NSURL(string: "https://api.nutritionix.com/v1_1/search/\(searchString)?results=0%3A20&cal_min=0&cal_max=50000&fields=item_name%2Cbrand_name%2Citem_id%2Cbrand_id&appId=\(kAppId)&appKey=\(kAppKey)")
+    let task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
+      var stringData = NSString(data: data, encoding: NSUTF8StringEncoding)
+      println(stringData)
+      println(response)
+    })
+    task.resume()
   }
 }
 
