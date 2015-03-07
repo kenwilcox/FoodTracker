@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE473A131AAAC30400CECB77 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE473A121AAAC30400CECB77 /* DataController.swift */; };
 		BE8D0F331AA0C09D00E8ED7A /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D0F321AA0C09D00E8ED7A /* APIKeys.swift */; };
 		BEB357B81A9983B000E34202 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB357B71A9983B000E34202 /* AppDelegate.swift */; };
 		BEB357BB1A9983B000E34202 /* FoodTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEB357B91A9983B000E34202 /* FoodTracker.xcdatamodeld */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE473A121AAAC30400CECB77 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		BE8D0F321AA0C09D00E8ED7A /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		BEB357B21A9983B000E34202 /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEB357B61A9983B000E34202 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				BE8D0F321AA0C09D00E8ED7A /* APIKeys.swift */,
 				BEB357B71A9983B000E34202 /* AppDelegate.swift */,
 				BEB357BC1A9983B000E34202 /* ViewController.swift */,
+				BE473A121AAAC30400CECB77 /* DataController.swift */,
 				BEB357DE1A9986E700E34202 /* DetailViewController.swift */,
 				BEB357BE1A9983B000E34202 /* Main.storyboard */,
 				BEB357C11A9983B000E34202 /* Images.xcassets */,
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEB357BD1A9983B000E34202 /* ViewController.swift in Sources */,
+				BE473A131AAAC30400CECB77 /* DataController.swift in Sources */,
 				BE8D0F331AA0C09D00E8ED7A /* APIKeys.swift in Sources */,
 				BEB357BB1A9983B000E34202 /* FoodTracker.xcdatamodeld in Sources */,
 				BEB357B81A9983B000E34202 /* AppDelegate.swift in Sources */,
