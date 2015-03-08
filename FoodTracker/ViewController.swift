@@ -85,12 +85,28 @@ extension ViewController: UITableViewDataSource {
       } else {
         return self.suggestedSearchFoods.count
       }
-    }
-    else if selectedScopeButtonIndex == 1 {
+    } else if selectedScopeButtonIndex == 1 {
       return self.apiSearchForFoods.count
-    }
-    else {
+    } else {
       return 0
+    }
+  }
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let selectedScopeButtonIndex = self.searchController.searchBar.selectedScopeButtonIndex
+    if selectedScopeButtonIndex == 0 {
+      var searchFoodName:String
+      if self.searchController.active {
+        searchFoodName = filteredSuggestedSearchFoods[indexPath.row]
+      } else {
+        searchFoodName = suggestedSearchFoods[indexPath.row]
+      }
+      self.searchController.searchBar.selectedScopeButtonIndex = 1
+      makeRequest(searchFoodName)
+    } else if selectedScopeButtonIndex == 1 {
+      
+    } else if selectedScopeButtonIndex == 2 {
+      
     }
   }
 }
@@ -100,6 +116,10 @@ extension ViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     self.searchController.searchBar.selectedScopeButtonIndex = 1
     makeRequest(searchBar.text)
+  }
+  
+  func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    self.tableView.reloadData()
   }
 }
 
@@ -179,8 +199,7 @@ extension ViewController: UISearchResultsUpdating {
           dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.tableView.reloadData()
           })
-        }
-        else {
+        } else {
           let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
           println("Error Could not Parse JSON \(errorString)")
         }                
