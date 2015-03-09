@@ -11,6 +11,9 @@ import UIKit
 import CoreData
 
 class DataController {
+  init() {
+    
+  }
   
   class func jsonAsUSDAIdAndNameSearchResults (json : NSDictionary) -> [(name: String, idValue: String)] {
     
@@ -65,7 +68,7 @@ class DataController {
           var items = managedObjectContext?.executeFetchRequest(requestForUSDAItem, error: &error)
           
           if items?.count != 0 {
-            //The item is already saved
+            println("The item is already saved!")
             return
           } else {
             println("Lets Save this to CoreData!")
