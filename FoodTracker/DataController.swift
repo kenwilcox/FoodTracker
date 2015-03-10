@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import CoreData
 
+let kUSDAItemCompleted = "USDAItemInstanceComplete"
+
 class DataController {
   init() {
     
@@ -117,6 +119,7 @@ class DataController {
                 } // end usda_fields
                 
                 (UIApplication.sharedApplication().delegate as AppDelegate).saveContext()
+                NSNotificationCenter.defaultCenter().postNotificationName(kUSDAItemCompleted, object: usdaItem)
               }
             }
           }
