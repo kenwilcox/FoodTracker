@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
   
@@ -20,6 +21,7 @@ class ViewController: UIViewController {
   var scopeButtonTitles = ["Recommended", "Search Results", "Saved"]
   var jsonResponse:NSDictionary!
   var dataController = DataController()
+  var favoritedUSDAItems:[USDAItem] = []
  
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -48,6 +50,12 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
+  func requestFavoritedUSDAItems () {
+    let fetchRequest = NSFetchRequest(entityName: "USDAItem")
+    let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+    let managedObjectContext = appDelegate.managedObjectContext
+    self.favoritedUSDAItems = managedObjectContext?.executeFetchRequest(fetchRequest, error: nil) as [USDAItem]
+  }
 }
 
 // MARK: UITableViewDelegate
@@ -61,6 +69,7 @@ extension ViewController: UITableViewDataSource {
     var cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
     var foodName: String
     let selectedScopeButtonIndex = self.searchController.searchBar.selectedScopeButtonIndex
+    
     if selectedScopeButtonIndex == 0 {
       if self.searchController.active && self.searchString! != "" {
         foodName = filteredSuggestedSearchFoods[indexPath.row]
@@ -71,8 +80,9 @@ extension ViewController: UITableViewDataSource {
     else if selectedScopeButtonIndex == 1 {
       foodName = apiSearchForFoods[indexPath.row].name
     } else {
-      foodName = ""
+      foodName = self.favoritedUSDAItems[indexPath.row].name
     }
+    
     cell.textLabel?.text = foodName
     cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
     return cell
@@ -89,7 +99,7 @@ extension ViewController: UITableViewDataSource {
     } else if selectedScopeButtonIndex == 1 {
       return self.apiSearchForFoods.count
     } else {
-      return 0
+      return self.favoritedUSDAItems.count
     }
   }
   
@@ -121,6 +131,9 @@ extension ViewController: UISearchBarDelegate {
   }
   
   func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    if selectedScope == 2 {
+      requestFavoritedUSDAItems()
+    }
     self.tableView.reloadData()
   }
 }
