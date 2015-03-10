@@ -53,6 +53,15 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "toDetailVCSegue" {
+      if sender != nil {
+        var detailVC = segue.destinationViewController as DetailViewController
+        detailVC.usdaItem = sender as? USDAItem
+      }
+    }
+  }
+  
   func requestFavoritedUSDAItems () {
     let fetchRequest = NSFetchRequest(entityName: "USDAItem")
     let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
@@ -116,20 +125,34 @@ extension ViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let selectedScopeButtonIndex = self.searchController.searchBar.selectedScopeButtonIndex
+    
     if selectedScopeButtonIndex == 0 {
       var searchFoodName:String
+      
       if self.searchController.active {
         searchFoodName = filteredSuggestedSearchFoods[indexPath.row]
       } else {
         searchFoodName = suggestedSearchFoods[indexPath.row]
       }
+      
       self.searchController.searchBar.selectedScopeButtonIndex = 1
       makeRequest(searchFoodName)
+      
     } else if selectedScopeButtonIndex == 1 {
+      self.performSegueWithIdentifier("toDetailVCSegue", sender: nil)
       let idValue = apiSearchForFoods[indexPath.row].idValue
       self.dataController.saveUSDAItemForId(idValue, json: self.jsonResponse)
-    } else if selectedScopeButtonIndex == 2 {
       
+    } else if selectedScopeButtonIndex == 2 {
+      if self.searchController.active && self.searchString! != "" {
+        
+        let usdaItem = filteredFavoritedUSDAItems[indexPath.row]
+        self.performSegueWithIdentifier("toDetailVCSegue", sender: usdaItem)
+        
+      } else {
+        let usdaItem = favoritedUSDAItems[indexPath.row]
+        self.performSegueWithIdentifier("toDetailVCSegue", sender: usdaItem)
+      }
     }
   }
 }
