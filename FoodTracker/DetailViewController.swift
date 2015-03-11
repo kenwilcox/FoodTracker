@@ -40,6 +40,9 @@ class DetailViewController: UIViewController {
   func usdaItemDidComplete(notification: NSNotification) {
     println("usdaItemDidComplete in DetailViewController")
     usdaItem = notification.object as? USDAItem
+    if self.isViewLoaded() && self.view.window != nil {
+      textView.attributedText = createAttributedString(usdaItem!)
+    }
   }
   
   @IBAction func eatItBarButtonItemPressed(sender: UIBarButtonItem) {
