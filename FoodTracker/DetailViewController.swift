@@ -12,10 +12,12 @@ class DetailViewController: UIViewController {
   
   @IBOutlet weak var textView: UITextView!
   
-  var usdaItem:USDAItem?
+  var usdaItem: USDAItem?
+  var darkStyle: Bool = true
   
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
+    
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "usdaItemDidComplete:", name: kUSDAItemCompleted, object: nil)
   }
   
@@ -48,20 +50,8 @@ class DetailViewController: UIViewController {
   @IBAction func eatItBarButtonItemPressed(sender: UIBarButtonItem) {
   }
   
-  func createAttributedString (usdaItem: USDAItem!) -> NSAttributedString {
+  func attributedString(title: String, fieldValue: String) -> NSAttributedString {
     var itemAttributedString = NSMutableAttributedString()
-    
-    var centeredParagraphStyle = NSMutableParagraphStyle()
-    centeredParagraphStyle.alignment = NSTextAlignment.Center
-    centeredParagraphStyle.lineSpacing = 10.0
-    
-    var titleAttributesDictionary = [
-      NSForegroundColorAttributeName: UIColor.blackColor(),
-      NSFontAttributeName: UIFont.boldSystemFontOfSize(22.0),
-      NSParagraphStyleAttributeName: centeredParagraphStyle]
-    
-    let titleString = NSAttributedString(string: "\(usdaItem.name)\n", attributes: titleAttributesDictionary)
-    itemAttributedString.appendAttributedString(titleString)
     
     var leftAllignedParagraphStyle = NSMutableParagraphStyle()
     leftAllignedParagraphStyle.alignment = NSTextAlignment.Left
@@ -82,53 +72,43 @@ class DetailViewController: UIViewController {
       NSFontAttributeName: UIFont.systemFontOfSize(18.0),
       NSParagraphStyleAttributeName: leftAllignedParagraphStyle]
     
-    // Calcium
-    let calciumTitleString = NSAttributedString(string: "Calcium ", attributes: styleFirstWordAttributesDictionary)
-    let calciumBodyString = NSAttributedString(string: "\(usdaItem.calcium)% \n", attributes: style1AttributesDictionary)
-    itemAttributedString.appendAttributedString(calciumTitleString)
-    itemAttributedString.appendAttributedString(calciumBodyString)
+    // This just toggles from darkGrayColor style to lightGrayColor style
+    var style = darkStyle == true ? style1AttributesDictionary : style2AttributesDictionary
+    darkStyle = !darkStyle
     
-    // Carbs
-    let carbohydrateTitleString = NSAttributedString(string: "Carbohydrate ", attributes: styleFirstWordAttributesDictionary)
-    let carbohydrateBodyString = NSAttributedString(string: "\(usdaItem.carbohydrate)% \n", attributes: style2AttributesDictionary)
-    itemAttributedString.appendAttributedString(carbohydrateTitleString)
-    itemAttributedString.appendAttributedString(carbohydrateBodyString)
+    let titleString = NSAttributedString(string: "\(title) ", attributes: styleFirstWordAttributesDictionary)
+    //let bodyString = NSAttributedString(string: "\(fieldValue)% \n", attributes: style)
+    let bodyString = NSAttributedString(string: String(format: "%.2f", (fieldValue as NSString).doubleValue) + "% \n", attributes: style)
     
-    // Cholesterol
-    let cholesterolTitleString = NSAttributedString(string: "Cholesterol ", attributes: styleFirstWordAttributesDictionary)
-    let cholesterolBodyString = NSAttributedString(string: "\(usdaItem.cholesterol)% \n", attributes: style1AttributesDictionary)
-    itemAttributedString.appendAttributedString(cholesterolTitleString)
-    itemAttributedString.appendAttributedString(cholesterolBodyString)
+    itemAttributedString.appendAttributedString(titleString)
+    itemAttributedString.appendAttributedString(bodyString)
     
-    // Energy
-    let energyTitleString = NSAttributedString(string: "Energy ", attributes: styleFirstWordAttributesDictionary)
-    let energyBodyString = NSAttributedString(string: "\(usdaItem.energy)% \n", attributes: style2AttributesDictionary)
-    itemAttributedString.appendAttributedString(energyTitleString)
-    itemAttributedString.appendAttributedString(energyBodyString)
+    return itemAttributedString
+  }
+  
+  func createAttributedString (usdaItem: USDAItem!) -> NSAttributedString {
+    var itemAttributedString = NSMutableAttributedString()
     
-    // Fat Total
-    let fatTotalTitleString = NSAttributedString(string: "FatTotal ", attributes: styleFirstWordAttributesDictionary)
-    let fatTotalBodyString = NSAttributedString(string: "\(usdaItem.fatTotal)% \n", attributes: style1AttributesDictionary)
-    itemAttributedString.appendAttributedString(fatTotalTitleString)
-    itemAttributedString.appendAttributedString(fatTotalBodyString)
+    var centeredParagraphStyle = NSMutableParagraphStyle()
+    centeredParagraphStyle.alignment = NSTextAlignment.Center
+    centeredParagraphStyle.lineSpacing = 10.0
     
-    // Protein
-    let proteinTitleString = NSAttributedString(string: "Protein ", attributes: styleFirstWordAttributesDictionary)
-    let proteinBodyString = NSAttributedString(string: "\(usdaItem.protein)% \n", attributes: style2AttributesDictionary)
-    itemAttributedString.appendAttributedString(proteinTitleString)
-    itemAttributedString.appendAttributedString(proteinBodyString)
+    var titleAttributesDictionary = [
+      NSForegroundColorAttributeName: UIColor.blackColor(),
+      NSFontAttributeName: UIFont.boldSystemFontOfSize(22.0),
+      NSParagraphStyleAttributeName: centeredParagraphStyle]
     
-    // Sugar
-    let sugarTitleString = NSAttributedString(string: "Sugar ", attributes: styleFirstWordAttributesDictionary)
-    let sugarBodyString = NSAttributedString(string: "\(usdaItem.sugar)% \n", attributes: style1AttributesDictionary)
-    itemAttributedString.appendAttributedString(sugarTitleString)
-    itemAttributedString.appendAttributedString(sugarBodyString)
+    let titleString = NSAttributedString(string: "\(usdaItem.name)\n", attributes: titleAttributesDictionary)
+    itemAttributedString.appendAttributedString(titleString)
     
-    // Vitamin C
-    let vitaminCTitleString = NSAttributedString(string: "Vitamin C ", attributes: styleFirstWordAttributesDictionary)
-    let vitaminCBodyString = NSAttributedString(string: "\(usdaItem.vitaminC)% \n", attributes: style2AttributesDictionary)
-    itemAttributedString.appendAttributedString(vitaminCTitleString)
-    itemAttributedString.appendAttributedString(vitaminCBodyString)
+    itemAttributedString.appendAttributedString(attributedString("Calcium", fieldValue: usdaItem.calcium))
+    itemAttributedString.appendAttributedString(attributedString("Carbohydrate", fieldValue: usdaItem.carbohydrate))
+    itemAttributedString.appendAttributedString(attributedString("Cholesterol", fieldValue: usdaItem.cholesterol))
+    itemAttributedString.appendAttributedString(attributedString("Energy", fieldValue: usdaItem.energy))
+    itemAttributedString.appendAttributedString(attributedString("Fat Total", fieldValue: usdaItem.fatTotal))
+    itemAttributedString.appendAttributedString(attributedString("Protein", fieldValue: usdaItem.protein))
+    itemAttributedString.appendAttributedString(attributedString("Sugar", fieldValue: usdaItem.sugar))
+    itemAttributedString.appendAttributedString(attributedString("Vitamin C", fieldValue: usdaItem.vitaminC))
     
     return itemAttributedString
   }
