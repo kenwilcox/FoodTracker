@@ -82,23 +82,53 @@ class DetailViewController: UIViewController {
       NSFontAttributeName: UIFont.systemFontOfSize(18.0),
       NSParagraphStyleAttributeName: leftAllignedParagraphStyle]
     
+    // Calcium
     let calciumTitleString = NSAttributedString(string: "Calcium ", attributes: styleFirstWordAttributesDictionary)
     let calciumBodyString = NSAttributedString(string: "\(usdaItem.calcium)% \n", attributes: style1AttributesDictionary)
-    
     itemAttributedString.appendAttributedString(calciumTitleString)
     itemAttributedString.appendAttributedString(calciumBodyString)
     
+    // Carbs
     let carbohydrateTitleString = NSAttributedString(string: "Carbohydrate ", attributes: styleFirstWordAttributesDictionary)
     let carbohydrateBodyString = NSAttributedString(string: "\(usdaItem.carbohydrate)% \n", attributes: style2AttributesDictionary)
-    
     itemAttributedString.appendAttributedString(carbohydrateTitleString)
     itemAttributedString.appendAttributedString(carbohydrateBodyString)
     
+    // Cholesterol
     let cholesterolTitleString = NSAttributedString(string: "Cholesterol ", attributes: styleFirstWordAttributesDictionary)
     let cholesterolBodyString = NSAttributedString(string: "\(usdaItem.cholesterol)% \n", attributes: style1AttributesDictionary)
-    
     itemAttributedString.appendAttributedString(cholesterolTitleString)
     itemAttributedString.appendAttributedString(cholesterolBodyString)
+    
+    // Energy
+    let energyTitleString = NSAttributedString(string: "Energy ", attributes: styleFirstWordAttributesDictionary)
+    let energyBodyString = NSAttributedString(string: "\(usdaItem.energy)% \n", attributes: style2AttributesDictionary)
+    itemAttributedString.appendAttributedString(energyTitleString)
+    itemAttributedString.appendAttributedString(energyBodyString)
+    
+    // Fat Total
+    let fatTotalTitleString = NSAttributedString(string: "FatTotal ", attributes: styleFirstWordAttributesDictionary)
+    let fatTotalBodyString = NSAttributedString(string: "\(usdaItem.fatTotal)% \n", attributes: style1AttributesDictionary)
+    itemAttributedString.appendAttributedString(fatTotalTitleString)
+    itemAttributedString.appendAttributedString(fatTotalBodyString)
+    
+    // Protein
+    let proteinTitleString = NSAttributedString(string: "Protein ", attributes: styleFirstWordAttributesDictionary)
+    let proteinBodyString = NSAttributedString(string: "\(usdaItem.protein)% \n", attributes: style2AttributesDictionary)
+    itemAttributedString.appendAttributedString(proteinTitleString)
+    itemAttributedString.appendAttributedString(proteinBodyString)
+    
+    // Sugar
+    let sugarTitleString = NSAttributedString(string: "Sugar ", attributes: styleFirstWordAttributesDictionary)
+    let sugarBodyString = NSAttributedString(string: "\(usdaItem.sugar)% \n", attributes: style1AttributesDictionary)
+    itemAttributedString.appendAttributedString(sugarTitleString)
+    itemAttributedString.appendAttributedString(sugarBodyString)
+    
+    // Vitamin C
+    let vitaminCTitleString = NSAttributedString(string: "Vitamin C ", attributes: styleFirstWordAttributesDictionary)
+    let vitaminCBodyString = NSAttributedString(string: "\(usdaItem.vitaminC)% \n", attributes: style2AttributesDictionary)
+    itemAttributedString.appendAttributedString(vitaminCTitleString)
+    itemAttributedString.appendAttributedString(vitaminCBodyString)
     
     return itemAttributedString
   }
