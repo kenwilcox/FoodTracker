@@ -64,6 +64,10 @@ class ViewController: UIViewController {
     }
   }
   
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
   func requestFavoritedUSDAItems () {
     let fetchRequest = NSFetchRequest(entityName: "USDAItem")
     let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
