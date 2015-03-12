@@ -11,6 +11,7 @@
 		BE473A151AAD559400CECB77 /* USDAItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE473A141AAD559400CECB77 /* USDAItem.swift */; };
 		BE8D0F331AA0C09D00E8ED7A /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D0F321AA0C09D00E8ED7A /* APIKeys.swift */; };
 		BE9877A01AB14D8D00BC27F6 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE98779F1AB14D8D00BC27F6 /* HealthKit.framework */; };
+		BE9877A21AB1536100BC27F6 /* HealthStoreConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9877A11AB1536100BC27F6 /* HealthStoreConstant.swift */; };
 		BEB357B81A9983B000E34202 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB357B71A9983B000E34202 /* AppDelegate.swift */; };
 		BEB357BB1A9983B000E34202 /* FoodTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEB357B91A9983B000E34202 /* FoodTracker.xcdatamodeld */; };
 		BEB357BD1A9983B000E34202 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB357BC1A9983B000E34202 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 		BE8D0F321AA0C09D00E8ED7A /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		BE98779E1AB14D8D00BC27F6 /* FoodTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FoodTracker.entitlements; sourceTree = "<group>"; };
 		BE98779F1AB14D8D00BC27F6 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		BE9877A11AB1536100BC27F6 /* HealthStoreConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthStoreConstant.swift; sourceTree = "<group>"; };
 		BEB357B21A9983B000E34202 /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEB357B61A9983B000E34202 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEB357B71A9983B000E34202 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				BEB357BC1A9983B000E34202 /* ViewController.swift */,
 				BE473A121AAAC30400CECB77 /* DataController.swift */,
 				BEB357DE1A9986E700E34202 /* DetailViewController.swift */,
+				BE9877A11AB1536100BC27F6 /* HealthStoreConstant.swift */,
 				BEB357BE1A9983B000E34202 /* Main.storyboard */,
 				BEB357C11A9983B000E34202 /* Images.xcassets */,
 				BEB357C31A9983B000E34202 /* LaunchScreen.xib */,
@@ -247,6 +250,7 @@
 			files = (
 				BEB357BD1A9983B000E34202 /* ViewController.swift in Sources */,
 				BE473A131AAAC30400CECB77 /* DataController.swift in Sources */,
+				BE9877A21AB1536100BC27F6 /* HealthStoreConstant.swift in Sources */,
 				BE8D0F331AA0C09D00E8ED7A /* APIKeys.swift in Sources */,
 				BE473A151AAD559400CECB77 /* USDAItem.swift in Sources */,
 				BEB357BB1A9983B000E34202 /* FoodTracker.xcdatamodeld in Sources */,
